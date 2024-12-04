@@ -1,6 +1,7 @@
 use crate::util::hash::*;
 use crate::util::iter::*;
 use crate::util::parse::*;
+
 type Input = (Vec<u32>, Vec<u32>);
 
 pub fn parse(input: &str) -> Input {
