@@ -1,5 +1,5 @@
-﻿use crate::util::grid::Grid;
-use crate::util::point::{Point, DOWN, LEFT, RIGHT};
+﻿use crate::util::grid::*;
+use crate::util::point::*;
 
 type Input = Grid<u8>;
 
@@ -32,6 +32,7 @@ pub fn part2(input: &Input) -> u32 {
     2
 }
 
+// Scans a line in both forward or reverse direction.
 fn scan_line(grid: &Input, mut point: Point, direction: Point, size: i32) -> u32 {
     let mut result = 0;
     let mut bytes = 0;
@@ -39,7 +40,7 @@ fn scan_line(grid: &Input, mut point: Point, direction: Point, size: i32) -> u32
     for _ in 0..size {
         bytes = (bytes << 8) | (grid[point] as u32); // Shift bytes to the left when reading the next character
         point += direction; // Shift the coordinates in the given direction
-        result += (bytes == 0x484d4153 || bytes == 0x53414d58) as u32; // Matches on XMAS or SAMX
+        result += (bytes == 0x584d4153 || bytes == 0x53414d58) as u32; // Matches on XMAS or SAMX
     }
 
     result
