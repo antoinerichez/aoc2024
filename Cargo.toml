@@ -290,4 +290,3 @@ wildcard_imports = "allow"
 zero_sized_map_values = "warn"
 
 [dependencies]
-regex = "1.11.1"

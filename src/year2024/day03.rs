@@ -1,25 +1,10 @@
-﻿use regex::Regex;
-use crate::util::parse::ParseOps;
-
-type Input<'h> = &'h str;
+﻿type Input = (u32, u32);
 
 pub fn parse(input: &str) -> Input {
-    input
-}
-
-pub fn part1(input: &Input) -> u32 {
-    let regex_validity: Regex = Regex::new(r"mul\((\d{1,3},\d{1,3})\)").unwrap();
-
-    regex_validity.find_iter(input)
-        .map(|line| line.as_str().iter_unsigned::<u32>().collect::<Vec<u32>>())
-        .map(|n| n[0] * n[1])
-        .sum()
-}
-
-pub fn part2(input: &Input) -> u32 {
     let input_array = input.as_bytes();
     let mut index = 0;
-    let mut result = 0;
+    let mut part1 = 0;
+    let mut part2 = 0;
     let mut enabled = true;
 
     while index < input_array.len() {
@@ -63,12 +48,23 @@ pub fn part2(input: &Input) -> u32 {
 
         index += 1;
 
+        let product = first_number * second_number;
+
+        part1 += product;
         if enabled {
-            result += first_number * second_number;
+            part2 += product;
         }
     }
 
-    result
+    (part1, part2)
+}
+
+pub fn part1(input: &Input) -> u32 {
+    input.0
+}
+
+pub fn part2(input: &Input) -> u32 {
+    input.1
 }
 
 /// Gets a number in char array until we encounter a non-digit ascii character
