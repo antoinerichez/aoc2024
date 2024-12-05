@@ -1,4 +1,4 @@
-﻿[package]
+[package]
 name="aoc"
 version = "2024.12.25"
 edition = "2021"
@@ -288,3 +288,6 @@ verbose_file_reads = "warn"
 wildcard_enum_match_arm = "allow"
 wildcard_imports = "allow"
 zero_sized_map_values = "warn"
+
+[dependencies]
+regex = "1.11.1"
