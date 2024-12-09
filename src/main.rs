@@ -32,6 +32,7 @@ fn main() {
 
     for Solution { year, day, path, wrapper } in solutions {
         if let Ok(data) = read_to_string(&path) {
+            println!("{}", data);
             let instant = Instant::now();
             let (part1, part2) = wrapper(data);
             let elapsed = instant.elapsed();

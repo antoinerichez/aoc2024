@@ -1,4 +1,4 @@
-﻿type Input = u32;
+﻿type Input = Vec<char>;
 
 pub fn parse(input: &str) -> Input {
     input.chars().filter(|x| x.is_ascii_digit()).collect()
